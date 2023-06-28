@@ -1,11 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-    </content>
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>
+import java.util.Scanner;
+
+public class Calculadora {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+       
+        double num1, num2, resultado;
+        String operador;
+       
+        System.out.print("Digite o primeiro número: ");
+        num1 = scanner.nextDouble();
+       
+        System.out.print("Digite o segundo número: ");
+        num2 = scanner.nextDouble();
+       
+        System.out.println("Escolha uma operação: ");
+        System.out.println("+ - Soma");
+        System.out.println("- - Subtração");
+        System.out.println("* - Multiplicação");
+        System.out.println("/ - Divisão");
+       
+        operador = scanner.next();
+       
+        switch (operador) {
+            case "+":
+                resultado = num1 + num2;
+                System.out.println("Resultado da soma: " + resultado);
+                break;
+            case "-":
+                resultado = num1 - num2;
+                System.out.println("Resultado da subtração: " + resultado);
+                break;
+            case "*":
+                resultado = num1 * num2;
+                System.out.println("Resultado da multiplicação: " + resultado);
+                break;
+            case "/":
+                if (num2 != 0) {
+                    resultado = num1 / num2;
+                    System.out.println("Resultado da divisão: " + resultado);
+                } else {
+                    System.out.println("Erro: Divisão por zero.");
+                }
+                break;
+            default:
+                System.out.println("Operador inválido.");
+                break;
+        }
+       
+        System.out.println("Deseja calcular novamente? (S/N)");
+        String opcao = scanner.next();
+       
+        if (opcao.equalsIgnoreCase("S")) {
+            main(args); // Chamada recursiva para permitir cálculos múltiplos
+        } else {
+            System.out.println("Encerrando a calculadora.");
+        }
+       
+        scanner.close();
+    }
+}
